@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact ismail</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background: url('cybersecurity_background.jpg') center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 20, 40, 0.85), rgba(0, 40, 80, 0.75));
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .profile-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00d4ff, #0099cc, #ffffff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .profile-subtitle {
+            font-size: 1.4rem;
+            color: #b0e0ff;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .profile-description {
+            max-width: 600px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0f0ff;
+            margin: 0 auto 30px;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .social-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            width: 100%;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 30px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
+        }
+
+        .social-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .social-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-item:hover::before {
+            left: 100%;
+        }
+
+        .social-item:hover::after {
+            opacity: 1;
+        }
+
+        .social-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .social-item.whatsapp {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.8), rgba(25, 135, 84, 0.8));
+            border-color: rgba(37, 211, 102, 0.3);
+        }
+
+        .social-item.whatsapp:hover {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.9), rgba(25, 135, 84, 0.9));
+            box-shadow: 0 20px 50px rgba(37, 211, 102, 0.3);
+        }
+
+        .social-item.instagram {
+            background: linear-gradient(135deg, rgba(240, 148, 51, 0.8), rgba(188, 24, 136, 0.8));
+            border-color: rgba(240, 148, 51, 0.3);
+        }
+
+        .social-item.instagram:hover {
+            background: linear-gradient(135deg, rgba(240, 148, 51, 0.9), rgba(188, 24, 136, 0.9));
+            box-shadow: 0 20px 50px rgba(240, 148, 51, 0.3);
+        }
+
+        .social-item.facebook {
+            background: linear-gradient(135deg, rgba(24, 119, 242, 0.8), rgba(66, 103, 178, 0.8));
+            border-color: rgba(24, 119, 242, 0.3);
+        }
+
+        .social-item.facebook:hover {
+            background: linear-gradient(135deg, rgba(24, 119, 242, 0.9), rgba(66, 103, 178, 0.9));
+            box-shadow: 0 20px 50px rgba(24, 119, 242, 0.3);
+        }
+
+        .social-item.gmail {
+            background: linear-gradient(135deg, rgba(234, 67, 53, 0.8), rgba(251, 188, 5, 0.8));
+            border-color: rgba(234, 67, 53, 0.3);
+        }
+
+        .social-item.gmail:hover {
+            background: linear-gradient(135deg, rgba(234, 67, 53, 0.9), rgba(251, 188, 5, 0.9));
+            box-shadow: 0 20px 50px rgba(234, 67, 53, 0.3);
+        }
+
+        .icon {
+            margin-right: 15px;
+            font-size: 28px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-code {
+            position: absolute;
+            color: rgba(0, 212, 255, 0.3);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            animation: floatCode 15s linear infinite;
+        }
+
+        .floating-code:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .floating-code:nth-child(2) { left: 30%; animation-delay: 3s; }
+        .floating-code:nth-child(3) { left: 50%; animation-delay: 6s; }
+        .floating-code:nth-child(4) { left: 70%; animation-delay: 9s; }
+        .floating-code:nth-child(5) { left: 90%; animation-delay: 12s; }
+
+        .cyber-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatCode {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        @media (max-width: 768px) {
+            .profile-title {
+                font-size: 2.5rem;
+            }
+
+            .profile-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .profile-description {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+
+            .social-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                max-width: 400px;
+            }
+
+            .social-item {
+                padding: 15px 25px;
+                font-size: 16px;
+            }
+
+            .icon {
+                font-size: 24px;
+                margin-right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .profile-title {
+                font-size: 2rem;
+            }
+
+            .social-item {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+
+        .pulse-effect {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <div class="cyber-grid"></div>
+    
+    <div class="floating-elements">
+        <div class="floating-code">console.log('Welcome');</div>
+        <div class="floating-code">function connect() {</div>
+        <div class="floating-code">return 'success';</div>
+        <div class="floating-code">}</div>
+        <div class="floating-code">// Digital Contact</div>
+    </div>
+
+    <div class="container">
+        <div class="header-section">
+            <h1 class="profile-title">Ismail</h1>
+            <p class="profile-subtitle">Digital Professional & Tech Enthusiast</p>
+            <p class="profile-description">
+                Welcome to my digital space. I'm passionate about technology, innovation, and creating meaningful connections in the digital world. Let's connect and explore opportunities together.
+            </p>
+        </div>
+
+        <div class="social-container">
+            <a href="https://wa.me/+2120718377072" class="social-item whatsapp" target="_blank">
+                <span class="icon">📱</span>
+                <span>WhatsApp</span>
+            </a>
+            
+            <a href="https://www.instagram.com/hex__404_?igsh=MXFrbWgwdW82MWU2eQ==" class="social-item instagram" target="_blank">
+                <span class="icon">📷</span>
+                <span>Instagram</span>
+            </a>
+            
+            <a href="https://www.facebook.com/share/1AZnpgWtiR/" class="social-item facebook" target="_blank">
+                <span class="icon">📘</span>
+                <span>Facebook</span>
+            </a>
+            
+            <a href="mailto:mojahedismail99@gmail.com" class="social-item gmail" target="_blank">
+                <span class="icon">✉️</span>
+                <span>Gmail</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced JavaScript for better interactivity and visual effects
+
+        // Smooth scroll and enhanced hover effects
+        document.querySelectorAll('.social-item').forEach((item, index) => {
+            // Staggered animation on load
+            item.style.animationDelay = `${index * 0.2}s`;
+            
+            // Enhanced hover effects
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.08)';
+                this.style.filter = 'brightness(1.1)';
+                
+                // Add ripple effect
+                createRipple(this);
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.filter = 'brightness(1)';
+            });
+            
+            // Enhanced click animation
+            item.addEventListener('click', function(e) {
+                this.style.transform = 'translateY(-15px) scale(0.95)';
+                this.classList.add('pulse-effect');
+                
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-15px) scale(1.08)';
+                    this.classList.remove('pulse-effect');
+                }, 150);
+                
+                // Create explosion effect
+                createExplosion(e, this);
+            });
+
+            // Touch support for mobile
+            item.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                this.style.transform = 'translateY(-10px) scale(1.05)';
+            });
+            
+            item.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }, 200);
+            });
+        });
+
+        // Create ripple effect function
+        function createRipple(element) {
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.8s linear';
+            ripple.style.left = '50%';
+            ripple.style.top = '50%';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            ripple.style.marginLeft = '-10px';
+            ripple.style.marginTop = '-10px';
+            ripple.style.pointerEvents = 'none';
+            
+            element.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 800);
+        }
+
+        // Create explosion effect function
+        function createExplosion(event, element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = '#00d4ff';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1000';
+                
+                const angle = (i / 8) * Math.PI * 2;
+                const velocity = 100;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                particle.style.animation = `explode 0.6s ease-out forwards`;
+                particle.style.setProperty('--vx', vx + 'px');
+                particle.style.setProperty('--vy', vy + 'px');
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 600);
+            }
+        }
+
+        // Add CSS for explosion animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes explode {
+                to {
+                    transform: translate(var(--vx), var(--vy));
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect for background
+        window.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const overlay = document.querySelector('.overlay');
+            overlay.style.background = `linear-gradient(${135 + mouseX * 10}deg, 
+                rgba(0, 20, 40, ${0.85 + mouseY * 0.1}), 
+                rgba(0, 40, 80, ${0.75 + mouseX * 0.1}))`;
+        });
+
+        // Typing effect for floating code
+        function addFloatingCode() {
+            const codes = [
+                'if (connected) { return true; }',
+                'const contact = new Connection();',
+                'await connect.establish();',
+                'console.log("Ready to connect");',
+                '// Building digital bridges'
+            ];
+            
+            const floatingElements = document.querySelector('.floating-elements');
+            const code = document.createElement('div');
+            code.className = 'floating-code';
+            code.textContent = codes[Math.floor(Math.random() * codes.length)];
+            code.style.left = Math.random() * 80 + 10 + '%';
+            
+            floatingElements.appendChild(code);
+            
+            setTimeout(() => {
+                code.remove();
+            }, 15000);
+        }
+
+        // Add new floating code every 3 seconds
+        setInterval(addFloatingCode, 3000);
+
+        // Loading animation
+        window.addEventListener('load', function() {
+            const elements = document.querySelectorAll('.social-item, .header-section');
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // Smooth scrolling for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
+
